@@ -48,6 +48,11 @@ namespace SECO_Weather
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name: "weather",
+                //    pattern: "weather/{*city}",
+                //    defaults: new{controller = "Weather", action ="Index"});
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
