@@ -14,7 +14,7 @@ namespace SECO_Weather.Services.Implementation
 
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();//await?
 
             string response;
             using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))

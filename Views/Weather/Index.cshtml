@@ -11,4 +11,40 @@
     <button id="btnSubmit">Get Weather</button>
 </div>
 
+<div>
+    <h2>Weather Forecast for: </h2>
+    <table>
+        <tr>
+            <td>
+                <img id="imgWeatherIconUrl" src="@ViewData["Icon"]" title="Weather Icon" />
+                @ViewData["Description"]
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Temperature: </strong>
+                @ViewData["Temperature"]
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Humidity: </strong>
+                @ViewData["Humidity"]
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Wind speed: </strong>
+                @ViewData["WindSpeed"]
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Wind direction: </strong>
+                @ViewData["WindDirection"]
+            </td>
+        </tr>
+    </table>
+</div>
 

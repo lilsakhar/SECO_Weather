@@ -24,7 +24,7 @@ namespace SECO_Weather.Controllers
             ViewData["WindSpeed"] = weatherDetail.wind.speed;
             ViewData["WindDirection"] = weatherDetail.wind.deg;
             ViewData["Description"] = weatherDetail.weather[0].description;
-            ViewData["Icon"] = weatherDetail.weather[0].icon;
+            ViewData["Icon"] = "http://openweathermap.org/img/wn/"+ weatherDetail.weather[0].icon +"@2x.png" ;
 
             return View();
         }
