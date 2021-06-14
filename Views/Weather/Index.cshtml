@@ -1,13 +1,14 @@
-﻿
+﻿@using Microsoft.Data.SqlClient
+
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Select City to view the weather:</h2>
 <div>
-    @Html.DropDownList("City", (SelectList)ViewData["City"])
+    @Html.DropDownList("City", (SelectList)ViewData["City"],
+        new { onchange = "this.form.submit();" })
 
-    <button id="btnSubmit">Get Weather</button>
 </div>
 
 <div>
@@ -51,19 +52,6 @@
     </table>
 </div>
 
-<script>
-    var City = JSON.parse()
-    {
-        "BD": "Bangladesh",
-        "BE": "Belgium",
-        "BF": "Burkina Faso",
-        "BG": "Bulgaria",
-        "BA": "Bosnia and Herzegovina"
-    }
-    var strInnerHTML = "";
-    $.each(Country, function( index, value ) {
-        strInnerHTML +='<option value="'+index+'">'+value+'</option>';
-    });
-    document.getElementById('opt_country').innerHTML = strInnerHTML;
-</script>
+
+
 
