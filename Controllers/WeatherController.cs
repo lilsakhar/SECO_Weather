@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SECO_Weather.DataAccess;
 using SECO_Weather.Models;
 using SECO_Weather.Services;
 using SECO_Weather.Services.Implementation;
@@ -7,8 +11,22 @@ namespace SECO_Weather.Controllers
 {
     public class WeatherController : Controller
     {
+        private readonly CityDbContext _context;
+
+        public WeatherController(CityDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
+            List<string> lstCity = new List<string>();
+
+            lstCity = (from City in _context.City select City.name).ToList();
+
+            var selectList = new SelectList(lstCity,  "name");
+
+            ViewData["City"] = selectList;
+
             return View();
         }
 

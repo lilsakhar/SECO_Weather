@@ -13,7 +13,7 @@ namespace SECO_Weather.DataAccess
         {
         }
 
-        DbSet<DAO> City { get; set; }
+        public DbSet<DAO> City { get; set; }
     }
 
 }

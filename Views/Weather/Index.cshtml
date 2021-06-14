@@ -5,22 +5,12 @@
 
 <h2>Select City to view the weather:</h2>
 <div>
-    @*<strong>City Name :</strong><input id="txtCity" type="text" 
-    <br />
-    <br />*@
-    
-    <strong>City Name : </strong><select id="selectCity" onchange="change_selectCity(this.value)">
-
-        <option value="city1">London</option>
-        <option value="city2">Paris</option>
-        <option value="city3">Kijow</option>
-    </select>
+    @Html.DropDownList("City", (SelectList)ViewData["City"])
 
     <button id="btnSubmit">Get Weather</button>
 </div>
 
 <div>
-    <h2>Weather for: </h2>
 
     <table>
         <tr>
