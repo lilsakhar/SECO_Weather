@@ -11,6 +11,7 @@
 
     public class DAOCoord
     {
+        public int id { get; set; }
         public float lon { get; set; }
         public float lat { get; set; }
     }

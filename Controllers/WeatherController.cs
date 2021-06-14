@@ -17,7 +17,6 @@ namespace SECO_Weather.Controllers
             IWeather weather = new WeatherImpl();
 
             DTO weatherDetail = weather.WeatherDetail(city);
-            Main main = new Main();
 
             ViewData["Temperature"] = weatherDetail.main.temp;
             ViewData["Humidity"] = weatherDetail.main.humidity;

@@ -3,16 +3,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Select City to view the weather:</h1>
+<h2>Select City to view the weather:</h2>
 <div>
-    <strong>City Name :</strong><input id="txtCity" type="text" />
+    @*<strong>City Name :</strong><input id="txtCity" type="text" 
     <br />
-    <br />
+    <br />*@
+    
+    <strong>City Name : </strong><select id="selectCity" onchange="change_selectCity(this.value)">
+
+        <option value="city1">London</option>
+        <option value="city2">Paris</option>
+        <option value="city3">Kijow</option>
+    </select>
+
     <button id="btnSubmit">Get Weather</button>
 </div>
 
 <div>
-    <h2>Weather Forecast for: </h2>
+    <h2>Weather for: </h2>
+
     <table>
         <tr>
             <td>
@@ -27,24 +36,44 @@
                 @ViewData["Temperature"]
             </td>
         </tr>
+
         <tr>
             <td>
                 <strong>Humidity: </strong>
                 @ViewData["Humidity"]
             </td>
         </tr>
+
         <tr>
             <td>
                 <strong>Wind speed: </strong>
                 @ViewData["WindSpeed"]
             </td>
         </tr>
+
         <tr>
             <td>
                 <strong>Wind direction: </strong>
                 @ViewData["WindDirection"]
             </td>
         </tr>
+
     </table>
 </div>
+
+<script>
+    var City = JSON.parse()
+    {
+        "BD": "Bangladesh",
+        "BE": "Belgium",
+        "BF": "Burkina Faso",
+        "BG": "Bulgaria",
+        "BA": "Bosnia and Herzegovina"
+    }
+    var strInnerHTML = "";
+    $.each(Country, function( index, value ) {
+        strInnerHTML +='<option value="'+index+'">'+value+'</option>';
+    });
+    document.getElementById('opt_country').innerHTML = strInnerHTML;
+</script>
 
