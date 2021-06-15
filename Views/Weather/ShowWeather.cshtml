@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "ShowWeather";
+}
+@model SECO_Weather.Models.DTO
+<div>
+
+    <table>
+        <tr>
+            <td>
+                <img id="imgWeatherIconUrl" src="@Model.weather[0].icon" title="Weather Icon" />
+                @Model.weather[0].description
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Temperature: </strong>
+                @Model.main.temp
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Humidity: </strong>
+                @Model.main.humidity
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Wind speed: </strong>
+                @Model.wind.speed
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Wind direction: </strong>
+                @Model.wind.deg
+            </td>
+        </tr>
+
+    </table>
+</div>
+

@@ -56,7 +56,7 @@ namespace SECO_Weather
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Weather}/{action=Index}/{id?}");
             });
         }
         

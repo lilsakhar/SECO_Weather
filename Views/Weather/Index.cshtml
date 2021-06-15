@@ -3,55 +3,39 @@
 @{
     ViewData["Title"] = "Index";
 }
+@model SECO_Weather.Models.DTO
+<form>
 
-<h2>Select City to view the weather:</h2>
-<div>
-    @Html.DropDownList("City", (SelectList)ViewData["City"],
-        new { onchange = "this.form.submit();" })
+    <h2>Select City to view the weather:</h2>
+    <div>
+        @Html.DropDownList("City", (SelectList)ViewData["City"],
+            new { onchange = "changeCity(this.value)" })
 
-</div>
+    </div>
+    <div id="content">
+        <partial name="ShowWeather.cshtml" model="@Model" />
+    </div>
 
-<div>
+</form>
 
-    <table>
-        <tr>
-            <td>
-                <img id="imgWeatherIconUrl" src="@ViewData["Icon"]" title="Weather Icon" />
-                @ViewData["Description"]
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <strong>Temperature: </strong>
-                @ViewData["Temperature"]
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <strong>Humidity: </strong>
-                @ViewData["Humidity"]
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <strong>Wind speed: </strong>
-                @ViewData["WindSpeed"]
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <strong>Wind direction: </strong>
-                @ViewData["WindDirection"]
-            </td>
-        </tr>
-
-    </table>
-</div>
-
+<script>
+    function changeCity(val) {
+        $.ajax({
+            type: "Get",
+            url: "/Weather/ShowWeather?City=" + val,  
+            success: function (data) {
+                $("#content").html("");
+                $("#content").html(data);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+        //var form = document.forms[0];
+        //form.action = 'ShowWeather';
+        //form.submit();
+    }
+</script>
 
 
 
