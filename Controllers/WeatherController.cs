@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SECO_Weather.DataAccess;
@@ -48,20 +50,23 @@ namespace SECO_Weather.Controllers
 
         public DTO GetWeather(string city)
         {
+            ViewData["Error"] = null;
             IWeather weather = new WeatherImpl();
+            DTO weatherDetail = new DTO();
 
-            DTO weatherDetail = weather.WeatherDetail(city);
-
-            weatherDetail.weather[0].icon =
-                "http://openweathermap.org/img/wn/" + weatherDetail.weather[0].icon + "@2x.png";
+            try
+            {
+                weatherDetail = weather.WeatherDetail(city);
+                weatherDetail.weather[0].icon =
+                    "http://openweathermap.org/img/wn/" + weatherDetail.weather[0].icon + "@2x.png";
+            }
+            catch (WebException e)
+            {
+                ViewData["Error"] = "City not found!";
+            }
 
             return weatherDetail;
-            //ViewData["Temperature"] = weatherDetail.main.temp;
-            //ViewData["Humidity"] = weatherDetail.main.humidity;
-            //ViewData["WindSpeed"] = weatherDetail.wind.speed;
-            //ViewData["WindDirection"] = weatherDetail.wind.deg;
-            //ViewData["Description"] = weatherDetail.weather[0].description;
-            //ViewData["Icon"] = "http://openweathermap.org/img/wn/" + weatherDetail.weather[0].icon + "@2x.png";
+            
         }
         
     }

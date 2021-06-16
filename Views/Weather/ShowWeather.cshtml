@@ -3,41 +3,42 @@
     ViewData["Title"] = "ShowWeather";
 }
 @model SECO_Weather.Models.DTO
-<div>
 
+<div>
+    <span style="color : red">@(ViewData["Error"] != null ? ViewData["Error"]: "")</span>
     <table>
         <tr>
             <td>
-                <img id="imgWeatherIconUrl" src="@Model.weather[0].icon" title="Weather Icon" />
-                @Model.weather[0].description
+                <img id="imgWeatherIconUrl" src="@(ViewData["Error"] != null ? "-" : @Model.weather[0].icon)" title="Weather Icon" />
+                @(ViewData["Error"] != null ? "-" : @Model.weather[0].description)
             </td>
         </tr>
 
         <tr>
             <td>
                 <strong>Temperature: </strong>
-                @Model.main.temp
+                @(ViewData["Error"] != null ? "-" : @Model.main.temp.ToString() + "°")
             </td>
         </tr>
 
         <tr>
             <td>
                 <strong>Humidity: </strong>
-                @Model.main.humidity
+                @(ViewData["Error"] != null ? "-" : @Model.main.humidity.ToString() + " %")
             </td>
         </tr>
 
         <tr>
             <td>
                 <strong>Wind speed: </strong>
-                @Model.wind.speed
+                @(ViewData["Error"] != null ? "-" : @Model.wind.speed.ToString() + " m/s")
             </td>
         </tr>
 
         <tr>
             <td>
                 <strong>Wind direction: </strong>
-                @Model.wind.deg
+                @(ViewData["Error"] != null ? "-" : @Model.wind.deg.ToString() + "°")
             </td>
         </tr>
 

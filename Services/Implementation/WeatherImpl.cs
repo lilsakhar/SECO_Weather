@@ -1,4 +1,5 @@
-﻿using SECO_Weather.Models;
+﻿using System;
+using SECO_Weather.Models;
 using System.IO;
 using System.Net;
 
@@ -12,10 +13,12 @@ namespace SECO_Weather.Services.Implementation
             string url = string.Format("http://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=metric", City,
                 appKeyID);
 
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-
+            HttpWebRequest httpWebRequest;
+            HttpWebResponse httpWebResponse;
+            
+            httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            
             string response;
             using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
             {

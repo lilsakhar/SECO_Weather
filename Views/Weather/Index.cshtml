@@ -4,14 +4,15 @@
     ViewData["Title"] = "Index";
 }
 @model SECO_Weather.Models.DTO
+
 <form>
 
     <h2>Select City to view the weather:</h2>
     <div>
         @Html.DropDownList("City", (SelectList)ViewData["City"],
             new { onchange = "changeCity(this.value)" })
-
     </div>
+
     <div id="content">
         <partial name="ShowWeather.cshtml" model="@Model" />
     </div>
@@ -22,7 +23,7 @@
     function changeCity(val) {
         $.ajax({
             type: "Get",
-            url: "/Weather/ShowWeather?City=" + val,  
+            url: "/Weather/ShowWeather?City=" + val,
             success: function (data) {
                 $("#content").html("");
                 $("#content").html(data);
@@ -31,9 +32,7 @@
                 console.log(response.responseText);
             }
         });
-        //var form = document.forms[0];
-        //form.action = 'ShowWeather';
-        //form.submit();
+
     }
 </script>
 
